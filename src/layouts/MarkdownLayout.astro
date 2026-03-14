@@ -1,7 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
-const {title} = Astro.props;
-const logo = "/assets/img/d5484-402-650751-0.jpg";
+const { frontmatter } = Astro.props;
 ---
 
 
@@ -10,13 +9,12 @@ const logo = "/assets/img/d5484-402-650751-0.jpg";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
+  <title>{frontmatter.title}</title>
 </head>
 <body>
 	<h1>astro練習サイト</h1>
 
-	<Nav />
-
+  <Nav />
 	<slot />
 </body>
 </html>

@@ -1,11 +1,56 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const nav = [
+  { href: "/", name: "ホーム" },
+  { href: "/company", name: "会社概要" },
+  { href: "/contact", name: "お問い合わせ" },
+];
+const active = '/contact';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ナビゲーション</title>
+  </head>
+  <body>
+    <h1>ナビゲーション</h1>
+    <nav>
+      <ul>
+        {
+          nav.map((item) => (
+            <li class:list={item.href === active && "is-active"}>
+              <a href={item.href}>{item.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </body>
+</html>
+
+<style lang="scss">
+  nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+    }
+    li {
+      // display: inline-block;
+      margin-right: 50px;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+      }
+      & .is-active {
+        a {
+          background-color: black;
+          color: red;
+        }
+      }
+  }
+
+</style>
